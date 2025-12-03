@@ -1,15 +1,16 @@
 import express from "express";
 import dbConnect from "./Config/db.js";
 import router from "./Router/authRouter.js";
-
+import cors from "cors"
 dbConnect();
 
 const app = express();
 
-// 🔥 IMPORTANT — yeh sabse upar hona chahiye
 app.use(express.json());
-
-app.use("/", router);
+app.use(cors({
+    origin: "http://localhost:5173",
+    credentials: true}))
+app.use("/api/auth", router);
 
 app.get("/", (req, res) => {
     res.send("server is runningg.....");
