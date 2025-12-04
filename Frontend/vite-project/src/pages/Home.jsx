@@ -13,10 +13,16 @@ import SearchBar from "../components/SearchBar/SearchBar";
 
 export default function Home() {
 return (
-<div className="min-h-screen bg-gray-50 text-gray-800">
+<div className=" relative min-h-screen">
+    <div className="relative">
 <HeroBanner/>
-<main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10">
+
+<div className="absolute top-2 left-1/2 -translate-x-1/2 w-full  max-w-2xl z-50 " >
 <SearchBar/>
+</div>
+    </div>
+
+<main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10">
 {/* <CategoriesGrid /> */}
 {/* <FeaturedProducts /> */}
 {/* <DealOfTheDay />
