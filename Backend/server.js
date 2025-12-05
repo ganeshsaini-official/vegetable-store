@@ -2,24 +2,39 @@ import express from "express";
 import dbConnect from "./Config/db.js";
 import router from "./Router/authRouter.js";
 import cors from "cors";
-// import uploadRouter from "./Router/uploadRouter.js";
+import dotenv from "dotenv";
+import productRoutes from "./Router/productRouter.js";
+import cookieParser from "cookie-parser";
+import { errorHandler } from "./middleware/errorHandler.js";
+import path from "path";
+import { fileURLToPath } from "url";
 
+dotenv.config();
 dbConnect();
+
+// ES modules me __dirname banane ke liye
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 
+app.use(cookieParser());
 app.use(express.json());
 
 app.use(cors({
     origin: "http://localhost:5173",
-    credentials: true
+    credentials: true,
 }));
 
-app.use("/api/auth", router);
-// app.use("/uploads", express.static("uploads"));
-// app.use("/api/upload",uploadRouter)
+// Static uploads
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
-const port = 5000;
+app.use("/api/auth", router);
+app.use("/api/products", productRoutes);
+
+app.use(errorHandler);
+
+const port = process.env.PORT;
 app.listen(port, () => {
     console.log(`server is running ${port}`);
 });

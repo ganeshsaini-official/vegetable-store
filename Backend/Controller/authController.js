@@ -1,4 +1,4 @@
-import User from "../Model/user.js"; 
+import User from "../Model/user.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import env from "dotenv"
@@ -100,39 +100,38 @@ export const loginUser = async (req, res) => {
   }
 };
 
-// // -------------------------------
-// // LOGOUT USER
-// // -------------------------------
-// export const logoutUser = async (req, res) => {
-//   try {
-//     // Frontend token ko remove karega
-//     res.json({ message: "Logout Successful" });
-//   } catch (error) {
-//     res.status(500).json({ message: error.message });
-//   }
-// };
+// -------------------------------
+// LOGOUT USER
+// -------------------------------
+export const logoutUser = async (req, res) => {
+  try {
+    // Frontend token ko remove karega
+    res.json({ message: "Logout Successful" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
 
-// // -------------------------------
-// // GET USER PROFILE
-// // -------------------------------
-// export const getProfile = async (req, res) => {
-//   try {
-//     const userId = req.user.id;  // authMiddleware se milta h
+// -------------------------------
+// GET USER PROFILE
+// -------------------------------
+export const getProfile = async (req, res) => {
+  try {
+    const userId = req.user.id;  // authMiddleware se milta h
 
-//     const user = await User.findById(userId).select("-password");
+    const user = await User.findById(userId).select("-password");
 
-//     if (!user) {
-//       return res.status(404).json({ message: "User not found!" });
-//     }
+    if (!user) {
+      return res.status(404).json({ message: "User not found!" });
+    }
 
-//     res.json({
-//       message: "Profile fetched successfully",
-//       user,
-//     });
+    res.json({
+      message: "Profile fetched successfully",
+      user,
+    });
 
-//   } catch (error) {
-//     res.status(500).json({ message: error.message });
-//   }
-// };
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
 
-// export default registerUser

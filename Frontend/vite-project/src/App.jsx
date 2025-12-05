@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
-
 import Home from "./pages/Home";
 import Categories from "./pages/Categories";
 import Products from "./pages/Products";
@@ -11,6 +10,7 @@ import Login from "./pages/Login.jsx";
 import Cart from "./pages/Cart.jsx";
 import Wholesale from "./pages/Wholesale.jsx";
 import Admin from "./pages/AdminOrders.jsx";
+import AddProduct from "./pages/AddProduct.jsx"; // ⬅️ NEW IMPORT
 
 const App = () => {
   return (
@@ -29,12 +29,13 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/admin" element={<Admin />} />
+
+          {/* ✅ NEW ADD PRODUCT PAGE */}
+          <Route path="/add-product" element={<AddProduct />} />
         </Routes>
       </Router>
-
     </>
   );
 };
 
 export default App;
-

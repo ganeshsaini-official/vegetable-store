@@ -1,8 +1,32 @@
-import Product from "../Model/product";
-// 🟢 CREATE PRODUCT
+import cloudinary from "../Config/cloudinary.js";
+import Product from "../Model/product.js";
+
+// 🟢 CREATE PRODUCT WITH IMAGE UPLOAD
 export const createProduct = async (req, res) => {
   try {
-    const product = await Product.create(req.body);
+    let imageUrl = "";
+
+    // Cloudinary Upload (if image provided)
+    if (req.file) {
+      const result = await new Promise((resolve, reject) => {
+        const stream = cloudinary.uploader.upload_stream(
+          { folder: "products" },
+          (error, result) => {
+            if (error) reject(error);
+            else resolve(result);
+          }
+        );
+        stream.end(req.file.buffer); // multer memory buffer
+      });
+
+      imageUrl = result.secure_url;
+    }
+
+    // Create Product
+    const product = await Product.create({
+      ...req.body,
+      image: imageUrl,
+    });
 
     res.status(201).json({
       success: true,
@@ -18,11 +42,7 @@ export const createProduct = async (req, res) => {
 export const getAllProducts = async (req, res) => {
   try {
     const products = await Product.find();
-
-    res.status(200).json({
-      success: true,
-      products,
-    });
+    res.status(200).json({ success: true, products });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }
@@ -32,9 +52,10 @@ export const getAllProducts = async (req, res) => {
 export const getSingleProduct = async (req, res) => {
   try {
     const product = await Product.findById(req.params.id);
-
     if (!product)
-      return res.status(404).json({ success: false, message: "Product not found" });
+      return res
+        .status(404)
+        .json({ success: false, message: "Product not found" });
 
     res.status(200).json({ success: true, product });
   } catch (error) {
@@ -42,10 +63,30 @@ export const getSingleProduct = async (req, res) => {
   }
 };
 
-// 🔵 UPDATE PRODUCT
+// 🔵 UPDATE PRODUCT + IMAGE UPDATE
 export const updateProduct = async (req, res) => {
   try {
-    const updated = await Product.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    let updateData = { ...req.body };
+
+    // If new image uploaded → upload to Cloudinary
+    if (req.file) {
+      const result = await new Promise((resolve, reject) => {
+        const stream = cloudinary.uploader.upload_stream(
+          { folder: "products" },
+          (error, result) => {
+            if (error) reject(error);
+            else resolve(result);
+          }
+        );
+        stream.end(req.file.buffer);
+      });
+
+      updateData.image = result.secure_url;
+    }
+
+    const updated = await Product.findByIdAndUpdate(req.params.id, updateData, {
+      new: true,
+    });
 
     res.status(200).json({
       success: true,

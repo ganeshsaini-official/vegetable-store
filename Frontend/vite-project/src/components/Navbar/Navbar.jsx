@@ -37,7 +37,7 @@ const styles = {
     justifyContent: "space-between", // left - center - right
     alignItems: "center",
     padding: "15px 30px",
-    background: "#333",
+    background: "oklch(58.6% 0.253 17.585)",
     color: "white",
   },
 

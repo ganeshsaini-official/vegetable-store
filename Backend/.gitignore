@@ -1,0 +1,21 @@
+# Node modules ignore
+node_modules/
+
+# Environment variables
+# .env
+
+# Uploaded images (optional, backend se upload hoti hain)
+# uploads/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Temp files
+.DS_Store
+*.log
+
+# Build artifacts (agar build karo to)
+dist/
