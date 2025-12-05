@@ -30,8 +30,6 @@ const userSchema = new mongoose.Schema(
     password: {
       type: String,
       required: [true, "Password is required"],
-      minlength: 6,
-      select: false, // Password query me by default nahi aayega
     },
 
     role: {
@@ -51,6 +49,7 @@ const userSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
 
 
 const User = mongoose.model("User", userSchema);

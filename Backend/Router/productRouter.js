@@ -18,7 +18,7 @@ const productRoutes = express.Router()
 
 // ⭐ Admin Only Routes
 // Create Product (with image upload)
-productRoutes.post("/", authMiddleware,  adminMiddleware, upload.single("image"), createProduct );
+productRoutes.post("/", authMiddleware,  adminMiddleware, createProduct );
 
 // Update Product (with optional image upload)
 productRoutes.put( "/:id",authMiddleware, adminMiddleware, upload.single("image"), updateProduct );

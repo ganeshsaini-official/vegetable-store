@@ -18,13 +18,10 @@ const ProductCard = ({ product }) => {
         {/* Product Name */}
         <h2 className="text-lg font-semibold text-gray-800">{product.name}</h2>
 
-        {/* Hindi Name (optional) */}
-        {product.hindiName && (
-          <p className="text-sm text-gray-500">{product.hindiName}</p>
-        )}
+<p>{product.description}</p>
 
         {/* Price */}
-        <p className="text-xl font-bold mt-2">₹{product.price} <span className="text-sm text-gray-500">/ Kg</span></p>
+        <p className="text-xl font-bold mt-2">₹{product.pricePerKg} <span className="text-sm text-gray-500">/ Kg</span></p>
 
         {/* Add to Cart Button */}
         <button className="w-full bg-green-600 text-white mt-3 py-2 rounded-lg hover:bg-green-700 transition">

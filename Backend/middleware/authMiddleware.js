@@ -4,7 +4,14 @@ import User from "../Model/user.js";
 const authMiddleware = async (req, res, next) => {
   try {
     // Token from Cookie
-    const token = req.cookies.token;
+    let token = req?.headers?.authorization;
+
+    console.log("token", token);
+    token = token.slice(7);
+    
+
+    console.log(token);
+    
 
     if (!token) {
       return res.status(401).json({

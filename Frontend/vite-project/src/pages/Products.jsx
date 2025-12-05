@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ProductCard from "../components/ProductCard/ProductCard";
+import axios from "axios";
+import Cookies from 'js-cookie'
+
 const sampleProducts = [
   {
     name: "Apple (Seb)",
@@ -22,13 +25,35 @@ const sampleProducts = [
 ];
 
 const Products = () => {
+  const [products, setProducts] = useState([])
+
+  useEffect(() => {
+    const fetchData  = async () => {
+      
+      try {
+      const {data} = await axios.get("http://localhost:5000/api/products", {
+        headers : {
+          Authorization : `Bearer ${Cookies.get("token")}`
+        }
+      })
+
+      console.log("data: ",data.products);
+      setProducts(data.products)
+      
+    } catch (error) {
+      console.log(error)
+    }
+    }
+
+    fetchData()
+  }, [])
   return (
     <div className="px-4 py-6">
       <h1 className="text-2xl font-bold mb-4">Showing {sampleProducts.length} products</h1>
 
       {/* Grid Layout */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-        {sampleProducts.map((item, i) => (
+        {products?.map((item, i) => (
           <ProductCard key={i} product={item} />
         ))}
       </div>

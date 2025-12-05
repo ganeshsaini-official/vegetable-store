@@ -10,31 +10,8 @@ import Footer from "../components/Footer/Footer";
 import HeroBanner from "../components/HeroBanner/HeroBanner";
 import SearchBar from "../components/SearchBar/SearchBar";
 
-// ⬅️ Sample products (later backend se aa jayenge)
-const sampleProducts = [
-  {
-    name: "Apple (Seb)",
-    price: 135,
-    image: "src/Uploads/Apple.png",
-  },
-  {
-    name: "Banana (Kela)",
-    price: 50,
-    image: "src/Uploads/Banana.png",
-  },
-  {
-    name: "Carrot (Gajar)",
-    price: 40,
-    image: "src/Uploads/Carrot.png",
-  },
-  {
-    name: "Cucumber (Kheera)",
-    price: 30,
-    image: "src/Uploads/Cucumber.png",
-  },
-];
-
 import ProductCard from "../components/ProductCard/ProductCard"; 
+import Products from "./Products";
 // ⬅️ product card component use hoga
 
 export default function Home() {
@@ -65,12 +42,7 @@ export default function Home() {
         {/* ---------------- PRODUCTS SECTION ---------------- */}
         <h2 className="text-2xl font-bold mb-5 mt-10">Popular Products</h2>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
-          {sampleProducts.map((p, i) => (
-            <ProductCard key={i} product={p} />
-          ))}
-        </div>
-
+        <Products/>
       </main>
 
       {/* ---------------- FOOTER ---------------- */}

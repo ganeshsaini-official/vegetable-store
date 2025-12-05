@@ -1,31 +1,12 @@
 import cloudinary from "../Config/cloudinary.js";
 import Product from "../Model/product.js";
 
-// 🟢 CREATE PRODUCT WITH IMAGE UPLOAD
 export const createProduct = async (req, res) => {
   try {
     let imageUrl = "";
 
-    // Cloudinary Upload (if image provided)
-    if (req.file) {
-      const result = await new Promise((resolve, reject) => {
-        const stream = cloudinary.uploader.upload_stream(
-          { folder: "products" },
-          (error, result) => {
-            if (error) reject(error);
-            else resolve(result);
-          }
-        );
-        stream.end(req.file.buffer); // multer memory buffer
-      });
-
-      imageUrl = result.secure_url;
-    }
-
-    // Create Product
     const product = await Product.create({
       ...req.body,
-      image: imageUrl,
     });
 
     res.status(201).json({
