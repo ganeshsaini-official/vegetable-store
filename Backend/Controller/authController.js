@@ -61,17 +61,17 @@ export const registerUser = async (req, res) => {
 // -------------------------------
 // LOGIN USER
 // -------------------------------
+
 export const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
-console.log(email ,password);
 
-    // Check fields
+    // Validation
     if (!email || !password) {
       return res.status(400).json({ message: "Please enter email and password" });
     }
 
-    // Find user
+    // Find user by email
     const user = await User.findOne({ email });
     if (!user) {
       return res.status(400).json({ message: "User not found!" });
@@ -79,31 +79,40 @@ console.log(email ,password);
 
     // Check password
     const isMatch = await bcrypt.compare(password, user.password);
-    console.log("isMatch", isMatch);
-    
     if (!isMatch) {
       return res.status(400).json({ message: "Invalid password!" });
     }
 
-    // Successful login
-    res.json({
-      message: "Login Successful",
-      user: {
-        id: user._id,
-        name: user.name,
-        email: user.email,
-        phone: user.phone,
-        isAdmin: user.isAdmin,
-      },
-      token: generateToken(user._id),
+    // Generate token
+    const token = generateToken(user._id);
+
+    // ⭐ TOKEN KO DB ME SAVE KARO
+    user.token = token;
+    await user.save();
+
+    // Send user data (without password)
+    const userData = {
+      id: user._id,
+      name: user.name,
+      email: user.email,
+      phone: user.phone,
+      isAdmin: user.isAdmin,
+      token: token, // optional
+    };
+
+    return res.status(200).json({
+      message: "Login successful",
+      user: userData,
+      token: token, // frontend localStorage me save karega
     });
 
   } catch (error) {
-    console.log(error);
-    
-    res.status(500).json({ message: error.message });
+    console.log("LOGIN ERROR:", error);
+    return res.status(500).json({ message: "Server error, try again later" });
   }
 };
+
+
 
 // -------------------------------
 // LOGOUT USER

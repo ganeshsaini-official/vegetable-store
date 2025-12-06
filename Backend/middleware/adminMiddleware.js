@@ -1,8 +1,8 @@
-// middleware/adminMiddleware.js
+// Yeh middleware tab chalega jab protect token ko verify kar chuka hoga
 
 export const adminMiddleware = (req, res, next) => {
   try {
-    // Agar token verify hi nahi hua to req.user empty hoga
+    // User object milna chahiye protect middleware se
     if (!req.user) {
       return res.status(401).json({
         success: false,
@@ -10,8 +10,8 @@ export const adminMiddleware = (req, res, next) => {
       });
     }
 
-    // User admin hai ya nahi
-    if (req.user.role !== "admin") {
+    // Agar tumhare User model me isAdmin field hai:
+    if (req.user.isAdmin !== true) {
       return res.status(403).json({
         success: false,
         message: "Admin access denied!",

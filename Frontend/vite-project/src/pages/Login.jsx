@@ -1,36 +1,39 @@
 import React, { useState } from "react";
-import axios from 'axios'
-import Cookies from 'js-cookie'
+import axios from "axios";
 
 const Login = () => {
-    const [userData, setUserData] = useState({
-        email: "",
-        password: ""
-    })
+  const [userData, setUserData] = useState({
+    email: "",
+    password: "",
+  });
 
-    const changeHandler = (e) => {
-        setUserData({
-            ...userData,
-            [e.target.name]: e.target.value,
-        })
+  const changeHandler = (e) => {
+    setUserData({
+      ...userData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    console.log(userData);
+
+    try {
+      const res = await axios.post(
+        "http://localhost:5000/api/auth/login",
+        userData
+      );
+
+      // Token Save
+      const token = res.data.token;
+      localStorage.setItem("authToken", token);
+      alert("Login Successful");
+
+    } catch (error) {
+      alert(error?.response?.data?.message || "Login Failed");
     }
-
-    const submitHandler = async  (e) => {
-        e.preventDefault();
-        console.log(userData);
-        try {
-            const res = await axios.post("http://localhost:5000/api/auth/login", userData)
-
-                Cookies.set("token", res.data.token)
-                console.log(res.data.user);
-                alert(res.data.message)
-            
-        } catch (error) {
-            alert(error?.response?.data?.message)
-        }
-
-    }
-     return (
+  };
+    return (
         <div style={styles.container}>
             <form onSubmit={submitHandler} style={styles.form}>
                 <h2 style={styles.title}>Login</h2>

@@ -28,8 +28,7 @@ export default function Home() {
       </div>
 
       {/* ---------------- MAIN CONTENT ---------------- */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10">
-
+<main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10">
         {/* OLD COMMENTED COMPONENTS (NOT REMOVED) */}
         {/* <CategoriesGrid /> */}
         {/* <FeaturedProducts /> */}

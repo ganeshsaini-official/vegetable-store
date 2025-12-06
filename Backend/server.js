@@ -2,14 +2,14 @@ import express from "express";
 import dbConnect from "./Config/db.js";
 import router from "./Router/authRouter.js";
 import cors from "cors";
-import dotenv from "dotenv";
+import env from "dotenv";
 import productRoutes from "./Router/productRouter.js";
 import cookieParser from "cookie-parser";
 import { errorHandler } from "./middleware/errorHandler.js";
 import path from "path";
 import { fileURLToPath } from "url";
 
-dotenv.config();
+env.config();
 dbConnect();
 
 // ES modules me __dirname banane ke liye
@@ -23,7 +23,7 @@ app.use(express.json());
 
 app.use(cors({
     origin: "http://localhost:5173",
-    credentials: true,
+    credentials: false,  // If using localStorage → credentials: false
 }));
 
 // Static uploads
@@ -34,7 +34,7 @@ app.use("/api/products", productRoutes);
 
 app.use(errorHandler);
 
-const port = process.env.PORT;
+const port = process.env.PORT || 5000;
 app.listen(port, () => {
     console.log(`server is running ${port}`);
 });
