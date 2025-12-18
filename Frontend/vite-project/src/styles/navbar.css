@@ -1,0 +1,116 @@
+/* Navbar Wrapper */
+.navbar {
+    width: 100%;
+    background: #ffffff;
+    padding: 12px 0;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Container */
+.nav-container {
+    width: 90%;
+    max-width: 1350px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Brand */
+.nav-brand h1 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #2e7d32;
+}
+
+/* Menu Links */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    padding: 8px 5px;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links .active {
+    color: #2e7d32;
+    border-bottom: 2px solid #2e7d32;
+}
+
+/* Dropdown Arrow */
+.nav-links span {
+    font-size: 12px;
+    margin-left: 3px;
+}
+
+/* Right Buttons */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* WhatsApp Button */
+.whatsapp-btn {
+    background: #25D366;
+    color: white;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.whatsapp-btn:hover {
+    background: #1ebe5d;
+}
+
+/* Cart Button */
+.cart-btn {
+    background: #2e7d32;
+    color: white;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.cart-btn:hover {
+    background: #256528;
+}
+
+/* Responsive Navbar */
+@media (max-width: 900px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+}

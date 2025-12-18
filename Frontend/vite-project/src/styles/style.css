@@ -1,0 +1,132 @@
+/* Navbar Wrapper */
+.navbar {
+    width: 100%;
+    background: #ffffff;
+    padding: 12px 0;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Main container */
+.nav-container {
+    width: 90%;
+    max-width: 1300px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Brand */
+.nav-brand h1 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #2e7d32;
+    cursor: pointer;
+}
+
+/* Menu */
+.nav-menu {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    list-style: none;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    font-weight: 500;
+    color: #333;
+    padding: 8px 5px;
+    transition: 0.3s;
+    font-size: 15px;
+}
+
+.nav-links li a:hover,
+.nav-links .active {
+    color: #2e7d32;
+    border-bottom: 2px solid #2e7d32;
+}
+
+/* Dropdown Arrow */
+.nav-links li span {
+    font-size: 12px;
+    margin-left: 4px;
+}
+
+/* Right side buttons */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* WhatsApp Button */
+.whatsapp-btn {
+    background: #25D366;
+    color: white;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.whatsapp-btn:hover {
+    background: #1ebe5d;
+}
+
+/* Cart Button */
+.cart-btn {
+    background: #2e7d32;
+    color: white;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.cart-btn:hover {
+    background: #256528;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .nav-menu {
+        order: 3;
+    }
+
+    .nav-actions {
+        order: 2;
+    }
+
+    .nav-links {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+    

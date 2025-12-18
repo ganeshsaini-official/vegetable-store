@@ -1,0 +1,82 @@
+const Categories = () => {
+  return (
+    <>
+      <div className="mt-6 max-w-6xl mx-auto px-4 mb-8">
+        <h1 className="text-center text-4xl font-semibold font-bold"> Categories </h1>
+          <div className="flex justify-center gap-8 mt-6">
+
+          <div className="flex flex-col items-center w-40 bg-red-500">
+            <img
+              src="src/Uploads/Apple.png"
+              alt="Fruits"
+              className="w-14 h-14 rounded-full object-cover border-2 hover:border-green-500"
+            />
+            <span className="text-base mt-2">Fruits</span>
+          </div>
+
+          <div className="flex flex-col items-center" w-40 >
+            <img
+              src="src/Uploads/Carrot.png"
+              alt="Vegetables"
+              className="w-14 h-14  rounded-full object-cover border-2 hover:border-green-500"
+            />
+            <span className="text-base mt-2">Seasonal Vegetables</span>
+          </div>
+
+          <div className="flex flex-col items-center w-40 ">
+            <img
+              src="src/Uploads/tomatos.jpg"
+              alt="Tomatos"
+              className="w-14 h-14  rounded-full object-cover border-2 hover:border-green-500"
+            />
+            <span className="text-base mt-2">Roots & Tubers</span>
+          </div>
+          <div className="flex flex-col items-center w-40 ">
+            <img
+              src="src/Uploads/SeasonalVegetables.jpg"
+              alt="Seasonal Vegetables"
+              className="w-14 h-14  rounded-full object-cover border-2 hover:border-green-500"
+            />
+            <span className="text-base mt-2">Seasonal</span>
+          </div>
+          <div className="flex flex-col items-center w-40 ">
+            <img
+              src="src/Uploads/HariSabji.jpg"
+              alt="Hari Sabji"
+              className="w-14 h-14  rounded-full object-cover border-2 hover:border-green-500"
+            />
+            <span className="text-base mt-2">Hari Sabji</span>
+          </div>
+
+          <div className="flex flex-col items-center w-40 ">
+            <img
+              src="src/Uploads/SeasonalVegetables.jpg"
+              alt="Seasonal Vegetables"
+              className="w-14 h-14  rounded-full object-cover border-2 hover:border-green-500"
+            />
+            <span className="text-base mt-2">Seasonal Vegetables</span>
+          </div>
+          <div className="flex flex-col items-center w-40 ">
+            <img
+              src="src/Uploads/SeasonalVegetables.jpg"
+              alt="Seasonal Vegetables"
+              className="w-14 h-14  rounded-full object-cover border-2 hover:border-green-500"
+            />
+            <span className="text-base mt-2">Organic Vegetables</span>
+          </div>
+          <div className="flex flex-col items-center w-40 ">
+            <img
+              src="src/Uploads/SeasonalVegetables.jpg"
+              alt="Seasonal Vegetables"
+              className="w-14 h-14  rounded-full object-cover border-2 hover:border-green-500"
+            />
+            <span className="text-base mt-2">Daily Essentials</span>
+          </div>
+
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Categories;
