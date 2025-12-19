@@ -51,12 +51,28 @@ const Navbar = () => {
 };
 
 const styles = {
-  nav: { display: "flex", justifyContent: "space-between", alignItems: "center", padding: "10px 20px", background: "#e91e63", color: "#fff" },
+  nav: { display: "flex", 
+    justifyContent: "space-between",
+     alignItems: "center", 
+     padding: "10px 20px",
+      background: "#830c6fff",
+       color: "#fff" },
   left: {},
-  center: { display: "flex", listStyle: "none", gap: "15px" },
-  right: { display: "flex", listStyle: "none", gap: "15px", alignItems: "center" },
+  center: { display: "flex", 
+    listStyle: "none",
+     gap: "15px" },
+
+  right: { display: "flex",
+     listStyle: "none",
+      gap: "15px", 
+      alignItems: "center" },
+
   logo: { margin: 0 },
-  link: { textDecoration: "none", color: "#fff", fontWeight: "500", position: "relative" },
+  link: { textDecoration: "none", 
+    color: "#fff",
+     fontWeight: "500", 
+    position: "relative" },
+
   cartCount: {
     position: "absolute",
     top: "-8px",

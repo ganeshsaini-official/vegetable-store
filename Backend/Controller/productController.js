@@ -108,7 +108,7 @@ export const getProductById = async (req, res) => {
 // @access  Private/Admin
 export const createProduct = async (req, res) => {
     try {
-        const { name, description, price, category, stock, unit, discount, isFeatured } = req.body;
+        const { name, hindiName, price, category, stock, unit, discount, isFeatured } = req.body;
 
         // Check if images uploaded
         if (!req.files || req.files.length === 0) {
@@ -129,7 +129,7 @@ export const createProduct = async (req, res) => {
 
         const product = new Product({
             name,
-            description,
+            hindiName,
             price,
             category,
             images: imageUrls,

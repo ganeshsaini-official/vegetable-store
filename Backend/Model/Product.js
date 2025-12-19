@@ -7,7 +7,7 @@ const productSchema = new mongoose.Schema(
       required: true,
       trim: true
     },
-    description: {
+    hindiName: {
       type: String,
       required: true
     },
@@ -36,7 +36,7 @@ const productSchema = new mongoose.Schema(
     unit: {
       type: String,
       required: true,
-      enum: ['kg', 'gram', 'piece', 'packet', 'dozen', 'liter']
+      enum: ['kg', 'gm', 'piece', 'packet', 'dozen', 'liter']
     },
     discount: {
       type: Number,

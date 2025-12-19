@@ -30,12 +30,13 @@ const HeroBanner = () => {
         <button className="bg-green-600 px-6 py-2 rounded-full text-white font-semibold shadow-lg mb-6">
           Farm Fresh · Trusted Quality
         </button>
+     
 
         <div className="flex gap-4 mt-4">
-          <button className="bg-pink-600 px-6 py-2 rounded-full text-white font-semibold shadow-lg mb-6 cursor-pointer">
+          <button className="bg-[#830c6fff] px-6 py-2 rounded-full text-white font-semibold shadow-lg mb-6 cursor-pointer">
             Shop Now
           </button>
-          <button className="bg-pink-600 px-6 py-2 rounded-full text-white font-semibold shadow-lg mb-6 cursor-pointer">
+          <button className="bg-[#830c6fff] px-6 py-2 rounded-full text-white font-semibold shadow-lg mb-6 cursor-pointer">
             Wholesale Orders
           </button>
         </div>
