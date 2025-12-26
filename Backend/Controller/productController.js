@@ -92,7 +92,7 @@ export const getProductById = async (req, res) => {
 
         res.json({
             success: true,
-            product,
+            product
         });
     } catch (error) {
         console.error(error);
